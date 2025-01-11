@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "animated-backgrounds": "^1.1.0",
     "axios": "^1.7.9",
     "cohere-ai": "^7.15.2",
     "dotenv": "^16.4.7",

@@ -22,11 +22,12 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
+
 export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="antialiased overflow-x-hidden max-w-7xl mx-auto relative z-10 h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white">
+    <main className="w-full antialiased overflow-x-hidden mx-auto relative z-10 h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white">
       <div className="text-center px-4 md:px-0">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Connect with People Who Share Your Musical Taste
@@ -44,7 +45,7 @@ export default function Home() {
       </div>
 
       <footer className="absolute bottom-4 text-center w-full text-sm text-gray-200">
-        <p>© 2025 YourAppName. All rights reserved.</p>
+      © {new Date().getFullYear()} SoundMates. All rights reserved.
       </footer>
     </main>
   );
