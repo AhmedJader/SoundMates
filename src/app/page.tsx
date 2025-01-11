@@ -51,7 +51,10 @@ export default function Home() {
         
         <button
           className="px-6 py-3 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition duration-300"
-          onClick={fetchToken}
+          onClick={() => {
+            fetchToken();
+            router.push('/login'); 
+          }}
         >
           Login with Spotify
         </button>
