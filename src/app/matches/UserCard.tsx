@@ -32,7 +32,10 @@ const UserCard: React.FC<UserCardProps> = ({ name, genres, similarity, imageUrl 
         <p className="text-sm text-gray-500 mt-2">{similarity}% Similar</p>
       </div>
       <div className="mt-4 flex justify-between">
-        <button className="bg-pink-500 text-lg text-white py-2 px-4 rounded-md hover:bg-pink-600 shadow-lg">
+        <button 
+          className="bg-pink-500 text-lg text-white py-2 px-4 rounded-md hover:bg-pink-600 shadow-lg"
+          onClick={() => router.push('../chat')}
+        >
           <strong>connect 🔗</strong>
         </button>
         <button 
