@@ -5,10 +5,8 @@ require('dotenv').config();
 let cachedToken = null;
 let tokenExpiry = null;
 
-const id = process.env.CLIENT_ID
-const secret = process.env.CLIENT_SECRET
-
-
+const id = process.env.NEXT_PUBLIC_CLIENT_ID
+const secret = process.env.NEXT_PUBLIC_CLIENT_SECRET
 
 async function fetchSpotifyToken() {
   const response = await fetch("https://accounts.spotify.com/api/token", {

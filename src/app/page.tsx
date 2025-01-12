@@ -2,11 +2,17 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
+require('dotenv').config();
+
+const id = process.env.NEXT_PUBLIC_CLIENT_ID
+const secret = process.env.NEXT_PUBLIC_CLIENT_SECRET
+
+const authorizeUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${id}&scope=user-read-private&redirect_uri=${encodeURIComponent('http://localhost:3000/login')}`;
 
 const fetchToken = async () => {
   try {
-    console.log("CLIENT_ID:", process.env.CLIENT_ID);
-    console.log("CLIENT_SECRET:", process.env.CLIENT_SECRET);
+    console.log("CLIENT_ID:", id);
+    console.log("CLIENT_SECRET:", secret);
     const response = await fetch('/api/spotify-gettoken');
     if (!response.ok) {
       throw new Error(`Error fetching token: ${response.statusText}`);
@@ -42,7 +48,10 @@ export default function Home() {
             </button>
             <button
               className="px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition flex items-center"
-              onClick={() => router.push('/login')}
+              onClick={() => {
+                fetchToken();
+                router.push('/login');
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +79,10 @@ export default function Home() {
 
         <button
           className="px-8 py-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 text-2xl font-semibold transition duration-300 flex items-center mx-auto"
-          onClick={() => router.push('/login')}
+          onClick={() => {
+            fetchToken();
+            router.push(authorizeUrl);
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
