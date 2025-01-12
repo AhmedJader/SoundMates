@@ -8,14 +8,31 @@ interface Profile {
   id: string;
   images: Array<{ url: string }>;
   product: string;
+  followers: { total: number };
+}
+
+interface Artist {
+  name: string;
+  images: Array<{ url: string }>;
+  id: string;
+}
+
+interface Track {
+  name: string;
+  images: Array<{ url: string }>;
+  id: string;
 }
 
 export default function ProfileStats() {
   const [profile, setProfile] = useState<Profile | null>(null);
-  
+  const [topArtist, setTopArtist] = useState<Artist | null>(null);
+  const [topTrack, setTopTrack] = useState<Track | null>(null);
+
   useEffect(() => {
     const token = localStorage.getItem('spotify_access_token');
+    
     if (token) {
+      // Fetch profile data
       fetch('https://api.spotify.com/v1/me', {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -23,15 +40,48 @@ export default function ProfileStats() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('Profile Data:', data); // Log the entire response
-          setProfile(data); // Set the profile state with the fetched data
+          setProfile(data); // Set profile data
         })
         .catch((error) => console.error('Error fetching profile:', error));
+
+      // Fetch top artist data
+      fetch('https://api.spotify.com/v1/me/top/artists?limit=1', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const artist = data.items[0]; // Assuming the response is an array of artists
+          setTopArtist({
+            name: artist.name,
+            images: artist.images,
+            id: artist.id,
+          });
+        })
+        .catch((error) => console.error('Error fetching top artist:', error));
+
+      // Fetch top track data
+      fetch('https://api.spotify.com/v1/me/top/tracks?limit=1', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const track = data.items[0]; // Assuming the response is an array of tracks
+          setTopTrack({
+            name: track.name,
+            images: track.images,
+            id: track.id,
+          });
+        })
+        .catch((error) => console.error('Error fetching top track:', error));
     } else {
       console.error('No access token found');
     }
   }, []);
-  
+
   const dummyData = {
     name: "John Smith",
     avatar: "https://via.placeholder.com/120", // Placeholder icon
@@ -43,7 +93,7 @@ export default function ProfileStats() {
       { title: "top artist 🌟", value: "Tame Impala" },
       { title: "total playlists 📂", value: "18" },
       { title: "most played song 🎶", value: "The Less I Know The Better" },
-      { title: "friends connected 🤝", value: "42" },
+      { title: "friends connected 🤝", value: "42" }, // Default dummy value for friends connected
     ],
   };
 
@@ -86,7 +136,15 @@ export default function ProfileStats() {
             className="bg-white text-black bg-opacity-60 p-6 rounded-lg shadow-2xl flex flex-col items-center"
           >
             <h3 className="text-lg font-bold text-pink-600 mb-6">{stat.title}</h3>
-            <p className="text-2xl font-bold">{stat.value}</p>
+            <p className="text-2xl font-bold">
+              {stat.title === "friends connected 🤝"
+                ? profile ? profile.followers.total.toString() : stat.value // Use profile.followers.total if available
+                : stat.title === "top artist 🌟"
+                ? topArtist ? topArtist.name : stat.value // Display top artist name if available
+                : stat.title === "most played song 🎶"
+                ? topTrack ? `${topTrack.name} by ${topArtist?.name}` : stat.value // Display top track with artist name
+                : stat.value}
+            </p>
           </div>
         ))}
       </section>

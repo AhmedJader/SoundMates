@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const id = process.env.NEXT_PUBLIC_CLIENT_ID;
 
-const authorizeUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${id}&scope=user-read-private&redirect_uri=${encodeURIComponent('http://localhost:3001/login')}`;
+const authorizeUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${id}&scope=user-read-private user-top-read&redirect_uri=${encodeURIComponent('http://localhost:3001/login')}`;
 
 export default function Home() {
   const router = useRouter();
