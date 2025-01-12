@@ -67,11 +67,8 @@ export default function Home() {
         </p>
 
         <button
-          className="px-6 py-3 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition duration-300"
-          onClick={() => {
-            fetchToken();
-            router.push('/login'); 
-          }}
+          className="px-8 py-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 text-2xl font-semibold transition duration-300 flex items-center mx-auto"
+          onClick={() => router.push('/login')}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
