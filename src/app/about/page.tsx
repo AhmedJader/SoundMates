@@ -2,13 +2,20 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import Navbar from '../components/navbar';
+import Navbar2 from '../components/navbar2';
+
+require('dotenv').config();
+
+const id = process.env.NEXT_PUBLIC_CLIENT_ID;
+
+const authorizeUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${id}&scope=user-read-private user-top-read&redirect_uri=${encodeURIComponent('http://localhost:3001/login')}`;
 
 const AboutPage = () => {
     const router = useRouter();
 
     return (
         <main className="w-full antialiased overflow-x-hidden mx-auto relative z-10 min-h-screen flex flex-col justify-between bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white">
-            <Navbar />
+            {authorizeUrl ? <Navbar /> : <Navbar2 />}
 
             <section className="mt-40 w-full max-w-7xl mx-auto px-6">
                 <div className="text-6xl font-bold text-white mb-16 text-center">About SoundMates</div>

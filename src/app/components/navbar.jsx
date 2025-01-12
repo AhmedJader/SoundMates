@@ -23,9 +23,21 @@ const Navbar = () => {
           </button>
           <button
             className="text-white hover:underline"
-            onClick={() => router.push('/features')}
+            onClick={() => router.push('/matches')}
           >
-            features
+            meet soundmates
+          </button>
+          <button
+            className="text-white hover:underline"
+            onClick={() => router.push('/game')}
+          >
+            game
+          </button>
+          <button
+            className="text-white hover:underline"
+            onClick={() => router.push('/profile')}
+          >
+            my profile
           </button>
           
         </nav>
