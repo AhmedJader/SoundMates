@@ -26,11 +26,17 @@ const page = () => {
             similarity: 78,
             imageUrl: 'https://via.placeholder.com/150',
         },
+        {
+            name: 'Another Person',
+            genres: 'Country, Classical',
+            similarity: 78,
+            imageUrl: 'https://via.placeholder.com/150',
+        },
     ];
 
     return (
-        <main className="w-full antialiased overflow-x-hidden mx-auto relative z-10 h-screen flex flex-col items-center justify-start bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white">
-            <nav className="bg-black shadow-lg bg-opacity-50 absolute top-0 left-0 w-full z-20">
+        <main className="w-full antialiased overflow-x-hidden mx-auto relative z-10 min-h-screen flex flex-col justify-between bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white">
+            <nav className="bg-black shadow-lg bg-opacity-50 fixed top-0 left-0 w-full z-20">
                 <div className="mx-auto flex items-center justify-between p-4">
                     <div className="text-4xl font-bold text-white">SoundMates</div>
                     <nav className="p-2 space-x-6 text-2xl flex items-center">
@@ -85,7 +91,7 @@ const page = () => {
                 </div>
             </section>
 
-            <section className="mt-12 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <section className="mt-12 mb-14 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {users.map((user, index) => (
                     <UserCard
                         key={index}
@@ -96,6 +102,10 @@ const page = () => {
                     />
                 ))}
             </section>
+
+            <footer className="absolute bottom-4 text-center w-full text-sm text-gray-200">
+                © {new Date().getFullYear()} SoundMates. All rights reserved.
+            </footer>
         </main>
     );
 };

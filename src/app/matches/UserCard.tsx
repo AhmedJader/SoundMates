@@ -28,8 +28,8 @@ const UserCard: React.FC<UserCardProps> = ({ name, genres, similarity, imageUrl 
         <p className="text-sm text-gray-500 mt-2">{similarity}% Similar</p>
       </div>
       <div className="mt-4 flex justify-between">
-        <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
-          Connect
+        <button className="bg-pink-500 text-lg text-white py-2 px-4 rounded-md hover:bg-blue-600">
+          <strong>Connect!</strong>
         </button>
         <button className="bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300">
           View Profile
