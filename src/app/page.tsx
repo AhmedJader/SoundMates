@@ -3,6 +3,19 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 
 
+const fetchToken = async () => {
+  try {
+    const response = await fetch('/api/spotify-gettoken');
+    if (!response.ok) {
+      throw new Error(`Error fetching token: ${response.statusText}`);
+    }
+    const data = await response.json();
+    console.log('Spotify Access Token:', data.access_token);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
 export default function Home() {
   const router = useRouter();
 
@@ -54,8 +67,11 @@ export default function Home() {
         </p>
 
         <button
-          className="px-8 py-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 text-3xl font-semibold transition duration-300 flex items-center mx-auto"
-          onClick={() => router.push('/login')}
+          className="px-6 py-3 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition duration-300"
+          onClick={() => {
+            fetchToken();
+            router.push('/login'); 
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
