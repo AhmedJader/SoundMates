@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 
 const fetchToken = async () => {
   try {
+    console.log("CLIENT_ID:", process.env.CLIENT_ID);
+    console.log("CLIENT_SECRET:", process.env.CLIENT_SECRET);
     const response = await fetch('/api/spotify-gettoken');
     if (!response.ok) {
       throw new Error(`Error fetching token: ${response.statusText}`);
