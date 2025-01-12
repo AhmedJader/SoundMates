@@ -10,28 +10,28 @@ const page = () => {
 
     const users = [
         {
-            name: 'John Doe',
-            genres: 'Pop, Indie Rock',
+            name: 'ae86',
+            genres: 'Mongolian Throat Singing, Canadian Hip Hop',
             similarity: 85,
-            imageUrl: 'https://via.placeholder.com/150',
+            imageUrl: 'https://cdn.discordapp.com/avatars/991430491318276257/a4ada378a542d858e28c20e126d7939d.webp?size=240',
         },
         {
-            name: 'Jane Smith',
-            genres: 'Jazz, Classical',
+            name: 'helloay',
+            genres: 'Pop',
             similarity: 92,
-            imageUrl: 'https://via.placeholder.com/150',
+            imageUrl: 'https://cdn.discordapp.com/avatars/774446869433679872/cc2b4de932f0e292257d53e02c77b807.webp?size=240',
         },
         {
-            name: 'Another Person',
-            genres: 'Country, Classical',
+            name: 'tintin',
+            genres: 'Rock, Indie',
             similarity: 78,
-            imageUrl: 'https://via.placeholder.com/150',
+            imageUrl: 'https://cdn.discordapp.com/avatars/516666801070014464/ebf3f11cc2465765d556c006ca196566.webp?size=240',
         },
         {
-            name: 'Another Person',
-            genres: 'Country, Classical',
+            name: 'Angela',
+            genres: 'Pop, Jazz',
             similarity: 78,
-            imageUrl: 'https://via.placeholder.com/150',
+            imageUrl: 'https://cdn.discordapp.com/avatars/749146033539252335/0a011cf6733e25f1642962280fa69a9f.webp?size=240',
         },
     ];
 

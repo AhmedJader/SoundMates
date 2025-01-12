@@ -22,13 +22,14 @@ interface Track {
   name: string;
   images: Array<{ url: string }>;
   id: string;
+  genre: string;
 }
 
 export default function ProfileStats() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [topArtist, setTopArtist] = useState<Artist | null>(null);
   const [topTrack, setTopTrack] = useState<Track | null>(null);
-  
+
   useEffect(() => {
     const token = localStorage.getItem('spotify_access_token');
     
@@ -73,6 +74,7 @@ export default function ProfileStats() {
           const track = data.items[0]; // Assuming the response is an array of tracks
           setTopTrack({
             name: track.name,
+            genre: track.genres ? track.genres[0] : 'Unknown', // Assuming the track has genres
             images: track.images,
             id: track.id,
           });
@@ -147,10 +149,16 @@ export default function ProfileStats() {
             <p className="text-2xl font-bold">
               {stat.title === "friends connected 🤝"
                 ? profile ? profile.followers.total.toString() : stat.value // Use profile.followers.total if available
+                
+                : stat.title === "favourite genre 🎸"
+                ? topTrack ? topTrack.genre : stat.value // Display top track genre if available
+                
                 : stat.title === "top artist 🌟"
                 ? topArtist ? topArtist.name : stat.value // Display top artist name if available
+                
                 : stat.title === "most played song 🎶"
                 ? topTrack ? `${topTrack.name} by ${topArtist?.name}` : stat.value // Display top track with artist name
+                
                 : stat.value}
             </p>
           </div>
