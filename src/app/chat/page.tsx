@@ -1,22 +1,22 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 
 export default function Chat() {
   const [messages, setMessages] = useState([
     {
-      user: "John Doe",
-      message: "Hey, I love your music!",
-      timestamp: "10:15 AM",
+      user: "John Doe", 
+      message: "Hello! How are you doing today?", 
+      timestamp: "10:15 AM"
     },
     {
-      user: "You",
-      message: "Thanks!",
-      timestamp: "10:21 AM",
+      user: "You", 
+      message: "I'm doing great, thanks for asking!", 
+      timestamp: "10:16 AM"
     },
   ]);
   const [message, setMessage] = useState("");
-  
-  // Explicitly type the ref to HTMLDivElement
-  const messageContainerRef = useRef<HTMLDivElement | null>(null);
+  const messageContainerRef = useRef(null);
 
   // Scroll to the bottom when a new message is added
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Chat() {
   }, [messages]);
 
   // Handle new message submission
-  const sendMessage = (e: React.FormEvent) => {
+  const sendMessage = (e) => {
     e.preventDefault();
 
     if (!message) {
@@ -127,8 +127,8 @@ export default function Chat() {
           font-size: 28px;
           font-weight: bold;
           margin-bottom: 20px;
-          color: black;  /* Set header text color to black */
-          text-align: center;
+          color: #495057;
+          text-align: center; 
         }
         .messages {
           flex-grow: 1;
@@ -159,7 +159,6 @@ export default function Chat() {
         .message-content {
           font-size: 16px;
           line-height: 1.4;
-          color: black;  /* Set message text color to black */
         }
         .timestamp {
           font-size: 12px;
@@ -180,7 +179,6 @@ export default function Chat() {
           font-size: 16px;
           border-radius: 8px;
           border: 1px solid #ccc;
-          color: black;  /* Set input text color to black */
         }
         .message-form button {
           padding: 12px 20px;
