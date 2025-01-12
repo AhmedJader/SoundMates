@@ -2,7 +2,7 @@ import React from 'react'
 
 const navbar = () => {
   return (
-    <nav className="bg-black shadow-lg bg-opacity-50 absolute top-0 left-0 w-full z-20">
+    <nav className="bg-black shadow-lg bg-opacity-50 fixed top-0 left-0 w-full z-20">
         <div className="mx-auto flex items-center justify-between p-4">
           <div className="text-4xl font-bold text-white">SoundMates</div>
           <nav className="p-2 space-x-6 text-2xl flex items-center">
