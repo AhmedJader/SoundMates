@@ -6,8 +6,8 @@ import Navbar from "./components/navbar";
 
 const fetchToken = async () => {
   try {
-    console.log("CLIENT_ID:", process.env.CLIENT_ID);
-    console.log("CLIENT_SECRET:", process.env.CLIENT_SECRET);
+    console.log("CLIENT_ID:", id);
+    console.log("CLIENT_SECRET:", secret);
     const response = await fetch('/api/spotify-gettoken');
     if (!response.ok) {
       throw new Error(`Error fetching token: ${response.statusText}`);
@@ -36,7 +36,10 @@ export default function Home() {
 
         <button
           className="px-8 py-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 text-2xl font-semibold transition duration-300 flex items-center mx-auto"
-          onClick={() => router.push('/login')}
+          onClick={() => {
+            fetchToken();
+            router.push(authorizeUrl);
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
