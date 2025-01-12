@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 import Navbar from "../components/navbar";
 
 interface Profile {
@@ -12,7 +13,7 @@ interface Profile {
 
 export default function ProfileStats() {
   const [profile, setProfile] = useState<Profile | null>(null);
-  
+
   useEffect(() => {
     const token = localStorage.getItem('spotify_access_token');
     if (token) {
@@ -31,10 +32,10 @@ export default function ProfileStats() {
       console.error('No access token found');
     }
   }, []);
-  
+
   const dummyData = {
     name: "John Smith",
-    avatar: "https://via.placeholder.com/120", // Placeholder icon
+    avatar: "", // Placeholder icon
     spotifyProfile: "https://open.spotify.com/user/spotify_user_id", 
     bio: "Music Enthusiast & Sound Explorer",
     stats: [
@@ -55,11 +56,18 @@ export default function ProfileStats() {
       {/* Profile Section */}
       <section className="pt-20 text-black mt-20 mx-auto w-full max-w-5xl px-6 text-center">
         <div className="bg-white p-8 rounded-lg shadow-2xl">
-          <img
-            src={profile ? profile.images[0]?.url : dummyData.avatar}
-            alt={`${profile ? profile.display_name : dummyData.name}'s Avatar`}
-            className="w-32 h-32 mx-auto rounded-full mb-4"
-          />
+          {/* Avatar Section */}
+          <div className="w-32 h-32 mx-auto mb-4" style={{ borderRadius: '50%', backgroundColor: '#ccc', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            {profile && profile.images.length > 0 ? (
+              <img
+                src={profile.images[0]?.url}
+                alt={`${profile.display_name}'s Avatar`}
+                className="w-full h-full rounded-full"
+              />
+            ) : (
+              <FaUserCircle size={50} color="#fff" />
+            )}
+          </div>
           <h1 className="text-4xl font-bold mb-2">{profile ? profile.display_name : dummyData.name}</h1>
           <p className="text-lg text-purple-600">{profile ? profile.email : dummyData.bio}</p>
           <a
