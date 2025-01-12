@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Navbar from '../components/navbar';
 
 const Cohere = () => {
   const [prompt, setPrompt] = useState('');
@@ -24,6 +25,7 @@ const Cohere = () => {
 
   return (
     <div className="flex items-center justify-center h-screen flex-col">
+      <Navbar />
       <h1 className="text-2xl font-bold mb-4">Cohere Page</h1>
       <form onSubmit={handleSubmit} className="mb-4">
         <input

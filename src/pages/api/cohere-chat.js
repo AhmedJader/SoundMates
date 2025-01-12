@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         messages: [
           {
             role: 'system',
-            content: 'You will take the user Spotify info and generate 4 fake users with similar music taste',
+            content: 'You provide the lyrics to the songs requested by the user.',
           },
           {
             role: 'user',
