@@ -74,7 +74,7 @@ export default function ProfileStats() {
           const track = data.items[0]; // Assuming the response is an array of tracks
           setTopTrack({
             name: track.name,
-            genre: track.genres ? track.genres[0] : 'Unknown', // Assuming the track has genres
+            genre: track.genres ? track.genres[0] : 'Hip Hop', // Assuming the track has genres
             images: track.images,
             id: track.id,
           });
