@@ -14,13 +14,17 @@ export default async function handler(req, res) {
         model: 'command-light',
         messages: [
           {
+            role: 'system',
+            content: 'You will take the user Spotify info and generate 4 fake users with similar music taste',
+          },
+          {
             role: 'user',
             content: message,
           },
         ],
       });
       
-      console.log('Cohere API response:',response.message.content[0]?.text);
+      console.log('Cohere API response:', response.message.content[0]?.text);
 
       res.status(200).json({ content: response.message.content[0]?.text || 'No response from Cohere API' });
     } catch (error) {
