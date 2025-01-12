@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import Navbar from "./components/navbar";
+import Navbar2 from './components/navbar2';
 
 require('dotenv').config();
 
@@ -15,7 +16,7 @@ export default function Home() {
   return (
     <main className="w-full antialiased overflow-x-hidden mx-auto relative z-10 h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white">
       {/* Transparent Header */}
-      <Navbar />
+      {authorizeUrl ? <Navbar /> : <Navbar2 />}
       <div className="text-center px-4 md:px-0">
         <h1 className="text-4xl md:text-8xl font-bold mb-10">
           SoundMates
