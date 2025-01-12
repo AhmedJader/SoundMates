@@ -50,10 +50,10 @@ const AboutPage = () => {
 
                 <div className="mt-12 text-center">
                     <button
-                        onClick={() => router.push('/features')}
+                        onClick={() => router.push('/profile')}
                         className="px-6 py-3 mt-[-20] bg-green-500 text-white rounded-full hover:bg-green-600 transition"
                     >
-                        Explore Features
+                        Explore Profile
                     </button>
                 </div>
             </section>

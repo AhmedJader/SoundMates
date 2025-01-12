@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         messages: [
           {
             role: 'system',
-            content: 'You provide the lyrics to the songs requested by the user.',
+            content: 'You will respond to the user with a song recommendation, and based on user input regarding music you will try to have similar music taste and open to explore similar musical genres.',
           },
           {
             role: 'user',
