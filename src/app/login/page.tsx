@@ -1,23 +1,30 @@
-"use client";
-import React from 'react';
+'use client';
 import { useRouter } from 'next/navigation';
-import Navbar from "../components/navbar";
+import { useEffect } from 'react';
 
-const Login = () => {
+export default function Login() {
   const router = useRouter();
 
-  return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <Navbar />
-      <h1 className="text-2xl font-bold mb-4">Login Page</h1>
-      <button
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        onClick={() => router.push('/cohere')}
-      >
-        Go to Cohere Page
-      </button>
-    </div>
-  );
-};
+  useEffect(() => {
+    const { searchParams } = new URL(window.location.href);
+    const code = searchParams.get('code');
 
-export default Login;
+    if (code) {
+      fetch('/api/exchange-token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Access Token:', data.access_token);
+          // Redirect or perform actions based on the token
+        })
+        .catch((error) => console.error('Error exchanging token:', error));
+    }
+  }, [router]);
+
+  return <div>Redirecting...</div>;
+}
