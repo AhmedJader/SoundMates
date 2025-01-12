@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
+
 const Navbar = () => {
   const router = useRouter(); // Initialize the router
 
@@ -23,7 +24,9 @@ const Navbar = () => {
           </button>
           <button
             className="px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition flex items-center"
-            onClick={() => router.push('/login')}
+            onClick={() => {
+              fetchToken();
+            }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

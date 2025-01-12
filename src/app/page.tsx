@@ -5,25 +5,9 @@ import Navbar from "./components/navbar";
 
 require('dotenv').config();
 
-const id = process.env.NEXT_PUBLIC_CLIENT_ID
-const secret = process.env.NEXT_PUBLIC_CLIENT_SECRET
+const id = process.env.NEXT_PUBLIC_CLIENT_ID;
 
-const authorizeUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${id}&scope=user-read-private&redirect_uri=${encodeURIComponent('http://localhost:3000/login')}`;
-
-const fetchToken = async () => {
-  try {
-    console.log("CLIENT_ID:", id);
-    console.log("CLIENT_SECRET:", secret);
-    const response = await fetch('/api/spotify-gettoken');
-    if (!response.ok) {
-      throw new Error(`Error fetching token: ${response.statusText}`);
-    }
-    const data = await response.json();
-    console.log('Spotify Access Token:', data.access_token);
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
+const authorizeUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${id}&scope=user-read-private&redirect_uri=${encodeURIComponent('http://localhost:3001/login')}`;
 
 export default function Home() {
   const router = useRouter();
@@ -42,10 +26,7 @@ export default function Home() {
 
         <button
           className="px-8 py-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 text-2xl font-semibold transition duration-300 flex items-center mx-auto"
-          onClick={() => {
-            fetchToken();
-            router.push(authorizeUrl);
-          }}
+          onClick={() => router.push(authorizeUrl)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +40,6 @@ export default function Home() {
           </svg>
           login with spotify
         </button>
-
       </div>
 
       <footer className="absolute bottom-4 text-center w-full text-sm text-gray-200">
@@ -68,4 +48,3 @@ export default function Home() {
     </main>
   );
 }
-
