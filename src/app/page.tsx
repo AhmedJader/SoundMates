@@ -74,7 +74,7 @@ export default function Home() {
           SoundMates
         </h1>
         <p className="text-2xl max-w-2xl mx-auto mb-16">
-          Discover and connect with people who have similar music tastes. Share your favorite tracks and meet new friends! 🎵🌟
+          Connect with people who have similar music tastes. Share your favourite tracks and meet new friends! 🎵🌟
         </p>
 
         <button
