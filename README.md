@@ -1,3 +1,6 @@
+
+![screenshot](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/207/126/datas/gallery.jpg)
+
 SoundMate
 💡 Inspiration
 The idea for SoundMate came from our shared love for music and the desire to connect with like-minded individuals. As music streaming continues to dominate, it’s fascinating to see how music preferences can shape our personalities and social connections. What if there was a way to not only discover new music but also connect with others based on mutual musical tastes? SoundMate was born out of this curiosity, combining music, AI, and social networking into one seamless experience.
